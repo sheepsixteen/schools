@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+
+<div class="mv5 mw7 center pa4">
+  {% assign lessons_by_number = site.posts | sort "lesson_number" %}
+  {% for lesson in lessons_by_number %}
+    <a class="link" href="{{ lesson.url }}">
+      <article class="overflow-hidden relative items-center ba b--moon-gray br3 pa3 px5 mb4">
+        <p class="absolute mv0 b lesson-number">{{ lesson.lesson_number }}</p>
+          <h2 class="f3 pv2 pa0 near-black">{{ lesson.title }}</h2>
+        <div class="f5 lh-copy near-black">{{ lesson.excerpt }}</div>
+      </article>
+    </a>
+  {% endfor %}
+</div>
+
