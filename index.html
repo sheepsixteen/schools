@@ -4,7 +4,7 @@ layout: default
 
 
 <div class="mv5 mw7 center pa4">
-  {% assign lessons_by_number = site.posts | sort "lesson_number" %}
+  {% assign lessons_by_number = site.posts | sort: "lesson_number" %}
   {% for lesson in lessons_by_number %}
     <a class="link" href="{{ lesson.url }}">
       <article class="overflow-hidden relative items-center ba b--moon-gray br3 pa3 px5 mb4">
