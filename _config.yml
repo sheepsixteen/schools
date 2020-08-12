@@ -11,8 +11,13 @@ github_username:  jekyll
 
 permalink: none
 
+markdown: SheepProcessor
+
+kramdown:
+  parse_block_html: true
+
 theme: 
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-redirect-from
 
