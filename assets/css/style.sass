@@ -7,3 +7,35 @@
 @import 'markdown_content'
 @import 'syntax'
 
+.modal-container
+  display: none
+
+.modal-container[aria-hidden="false"]
+  display: flex
+
+.modal-container.wrong-password .modal
+  border: 2px solid red
+
+.modal
+  background-color: white
+  width: 30em
+  border-radius: 4px
+  height: 18em
+  display: flex
+  padding: 1em
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  label
+    font-size: 18px
+
+  button
+    outline: none
+    border: unset
+    border-radius: 4px
+
+    &:focus
+      box-shadow: 1
+
+
