@@ -3,9 +3,12 @@
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css')
 
-@import 'lesson_number'
 @import 'markdown_content'
 @import 'syntax'
+@import 'home'
+
+.focus:focus
+  box-shadow: 0 0 0 3px rgba(66,153,225,.5)
 
 .modal-container
   display: none
@@ -35,7 +38,8 @@
     border: unset
     border-radius: 4px
 
-    &:focus
-      box-shadow: 1
+  input, button
+    @extend .focus
+
 
 

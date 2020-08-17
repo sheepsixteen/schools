@@ -1,0 +1,41 @@
+$timeline-color: #004ffc
+
+.lessons
+  display: grid
+  grid-template-columns: 7em 40px auto
+  grid-gap: 1em
+
+  @media (max-width: 40em)
+    grid-template-columns: 1fr
+
+    .timeline, .circle
+      display: none
+
+  .timeline
+    position: relative
+    height: 100%
+    width: 100%
+
+  .circle
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    background-color: $timeline-color
+    height: 24px
+    width: 24px
+    border-radius: 9999px
+
+  .line
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    background-color: $timeline-color
+    width: 4px
+    height: 120%
+    
+
+  .lesson
+    p 
+      margin: 0
+    
+

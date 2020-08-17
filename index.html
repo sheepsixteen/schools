@@ -2,10 +2,51 @@
 layout: default
 ---
 
-
 <div class="mv5 mw7 center pa4">
+  <h1 class="tc b mb4 f4 lh-headline dark-gray pb3">
+    שיעורי תכנות מאת SpaceSheep
+  </h1>
+
+  <form role="search">
+    <label class="dib b f5 " for="lesson_number">
+      עבור לשיעור מספר...
+    </label>
+    <input
+      class="mb3 pa2 input-reset ba b--moon-gray outline-0 br2"
+      type="number"
+      name="lesson_number"
+      id="lesson_number"
+    />
+    <button
+      id="go_to_lesson_number"
+      class="bg-purple bn focus b pointer ph3 pv2 white button-reset"
+      type="submit"
+    >
+      לך
+    </button>
+  </form>
+
+  <hr class="db mb5" />
+
   {% assign lessons_by_number = site.posts | sort: "lesson_number" %}
-  {% for lesson in lessons_by_number %}
+  <div class="lessons">
+    {% for lesson in lessons_by_number %}
+      <div class="lesson-number gray">
+        <p class="mv0">
+          שיעור מספר {{ lesson.lesson_number }}
+        </p>
+      </div>
+      <div class="timeline">
+        <div class="circle"></div>
+        <div class="line"></div>
+      </div>
+      <div class="lesson lh-copy measure mb4 f5">
+        <h2 class="mt0 f4">{{ lesson.title }}</h2>
+        {{ lesson.excerpt | truncate: 100 }}
+      </div>
+    {% endfor %}
+  </div>
+  <!--
     <a class="link" href="{{ lesson.url }}">
       <article class="overflow-hidden relative items-center ba b--moon-gray br3 pa3 px5 mb4">
         <p class="absolute mv0 b lesson-number">{{ lesson.lesson_number }}</p>
@@ -13,6 +54,6 @@ layout: default
         <div class="f5 lh-copy near-black">{{ lesson.excerpt }}</div>
       </article>
     </a>
-  {% endfor %}
+  -->
 </div>
 
