@@ -3,12 +3,12 @@ layout: default
 ---
 
 <div class="mv5 mw7 center pa4">
-  <h1 class="tc b mb4 f4 lh-headline dark-gray pb3">
+  <h1 class="tc b mb2 f4 lh-headline dark-gray pb3">
     שיעורי תכנות מאת SpaceSheep
   </h1>
 
-  <form role="search">
-    <label class="dib b f5 " for="lesson_number">
+  <form id="lesson_number_form" class="tc" role="search">
+    <label class="dib f5 ml3" for="lesson_number">
       עבור לשיעור מספר...
     </label>
     <input
@@ -19,14 +19,14 @@ layout: default
     />
     <button
       id="go_to_lesson_number"
-      class="bg-purple bn focus b pointer ph3 pv2 white button-reset"
+      class="bg-blue bn focus b pointer ph3 pv2 white button-reset"
       type="submit"
     >
       לך
     </button>
   </form>
 
-  <hr class="db mb5" />
+  <hr class="db mv4" />
 
   {% assign lessons_by_number = site.posts | sort: "lesson_number" %}
   <div class="lessons">
@@ -40,20 +40,14 @@ layout: default
         <div class="circle"></div>
         <div class="line"></div>
       </div>
-      <div class="lesson lh-copy measure mb4 f5">
+      <article class="lesson lh-copy measure mb4 f5">
         <h2 class="mt0 f4">{{ lesson.title }}</h2>
         {{ lesson.excerpt | truncate: 100 }}
-      </div>
+        <a class="db mt1 link" href="{{ lesson.url }}">
+          כנס לשיעור &larr;
+        </a>
+      </article>
     {% endfor %}
   </div>
-  <!--
-    <a class="link" href="{{ lesson.url }}">
-      <article class="overflow-hidden relative items-center ba b--moon-gray br3 pa3 px5 mb4">
-        <p class="absolute mv0 b lesson-number">{{ lesson.lesson_number }}</p>
-          <h2 class="f3 pv2 pa0 near-black">{{ lesson.title }}</h2>
-        <div class="f5 lh-copy near-black">{{ lesson.excerpt }}</div>
-      </article>
-    </a>
-  -->
 </div>
 

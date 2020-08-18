@@ -37,7 +37,19 @@ function wrongPassword() {
   passwordInput.setAttribute('aria-invalid', 'true')
 }
 
+
+function addLessonForm() {
+  document.getElementById("lesson_number_form").addEventListener('submit', e => {
+    e.preventDefault()
+    window.location = document.getElementById("lesson_number").value
+  })
+}
+
 (() => {
   addFirewall()
+
+  if (window.location.pathname === '/') {
+    addLessonForm()
+  }
 })()
 
