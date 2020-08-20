@@ -24,6 +24,10 @@ const passwordModal = document.getElementById('password-modal')
 
 function openModal() {
   passwordModal.setAttribute('aria-hidden', 'false')
+
+  // Make body stay fixed
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${window.scrollY}px`;
 }
 
 function closeModal() {
@@ -31,6 +35,12 @@ function closeModal() {
   passwordInput.setAttribute('aria-invalid', 'false')
 
   window.localStorage.setItem('entered-password', 'yes')
+
+  // Make body stay fixed
+  const scrollY = document.body.style.top;
+  document.body.style.position = '';
+  document.body.style.top = '';
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 function wrongPassword() {
