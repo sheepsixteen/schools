@@ -95,7 +95,9 @@ Python היא שפת תכנות שהחלה להיבנות בסוף שנות ה-8
 -------------------------------
   
 
-``` print(“שלום עולם”) ```
+```python
+print(“שלום עולם”)
+```
 
   
 
@@ -152,23 +154,15 @@ Python היא שפת תכנות שהחלה להיבנות בסוף שנות ה-8
   
 
 1.  כניסה לאתר, הקישור הוא [https://repl.it/](https://repl.it/)
-    
 2.  לחיצה על כפתור התחלת תכנות אשר נמצא באמצע המסך:
-    
 
-![](https://lh5.googleusercontent.com/ITxUoWrrwwX7brg73LZ8eH3iPW1c-K8Rkb5g8_ldTbbVmaDYgrj-kaddyCWZ3vgpHvrPwDr4MGXArweFx1w74-7rDE9VEZBM1qIvBv-uy662FEZWk0IY8ZzNsfIprm95XJMLPaGL)
-
-  
+    ![](https://lh5.googleusercontent.com/ITxUoWrrwwX7brg73LZ8eH3iPW1c-K8Rkb5g8_ldTbbVmaDYgrj-kaddyCWZ3vgpHvrPwDr4MGXArweFx1w74-7rDE9VEZBM1qIvBv-uy662FEZWk0IY8ZzNsfIprm95XJMLPaGL)
 
 3.  בחירה בpython ולחיצה על יצירה:
-    
-
-![](https://lh3.googleusercontent.com/y5SPn6dcyxZd1rjRA7arBCDdhnDmp1tA-ikUH44p1_0tF-EHKaf3493jr9A4r1GzBMUL2h5BIM_8LgHW-BnO_DKaA6DKwVFMCRrTT5xab3CKGqaUP7AJOKSnW2xw-AE7aDUAC0hp)
+    ![](https://lh3.googleusercontent.com/y5SPn6dcyxZd1rjRA7arBCDdhnDmp1tA-ikUH44p1_0tF-EHKaf3493jr9A4r1GzBMUL2h5BIM_8LgHW-BnO_DKaA6DKwVFMCRrTT5xab3CKGqaUP7AJOKSnW2xw-AE7aDUAC0hp)
 
 
 4.  כתיבת הקוד הראשון בלחיצה על כפתור הריצה:
-    
-
-![](https://lh4.googleusercontent.com/ReCJ4MsAdycmAtdSguNzMUU71d2v0xWRnChrRgX8YQBRFTCskKy6vqoOUNqfTRhky7Fn5DlxRkjfMByyNb6oxTfd5ZyZDuHtwGsW1g7_4Jtl4WU8_eOm_x5b11k-e_Z-kVaNIgWZ)
+    ![](https://lh4.googleusercontent.com/ReCJ4MsAdycmAtdSguNzMUU71d2v0xWRnChrRgX8YQBRFTCskKy6vqoOUNqfTRhky7Fn5DlxRkjfMByyNb6oxTfd5ZyZDuHtwGsW1g7_4Jtl4WU8_eOm_x5b11k-e_Z-kVaNIgWZ)
 
 5.  זהו! סיימתם את יצירת סביבת העבודה וכתיבת הקוד הראשון שלכם! נתראה בשיעורים הבאים, בהם תלמדו עוד על Python ועל כתיבת קוד בו.
