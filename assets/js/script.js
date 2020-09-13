@@ -51,7 +51,10 @@ function wrongPassword() {
 function addLessonForm() {
   document.getElementById("lesson_number_form").addEventListener('submit', e => {
     e.preventDefault()
-    window.location = document.getElementById("lesson_number").value
+
+    lessonNumber = document.getElementById("lesson_number").value
+    lesson = document.getElementsByTagName("article")[lessonNumber - 1]
+    window.location = document.getElementsByTagName("a", lesson)[0].href
   })
 }
 
