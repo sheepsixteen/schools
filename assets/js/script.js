@@ -2,7 +2,25 @@ passwords = ['password']
 
 const passwordInput = document.getElementById('spacesheep-site-password')
 
+String.prototype.hashCode = function() {
+    var hash = 0;
+    if (this.length == 0) {
+        return hash;
+    }
+    for (var i = 0; i < this.length; i++) {
+        var char = this.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+}
+
 function addFirewall() {
+  const page = window.location.pathname
+  const password_for_page = page.hashCode().toString().slice(3)
+
+  console.log(page, password_for_page)
+
   if (window.localStorage.getItem('entered-password') == 'yes') {
     return
   }
@@ -52,17 +70,17 @@ function addLessonForm() {
   document.getElementById("lesson_number_form").addEventListener('submit', e => {
     e.preventDefault()
 
-    lessonNumber = document.getElementById("lesson_number").value
-    lesson = document.getElementsByTagName("article")[lessonNumber - 1]
-    window.location = document.getElementsByTagName("a", lesson)[0].href
+    let lessonNumber = document.getElementById("lesson_number").value
+    let lesson = document.getElementsByTagName("article")[lessonNumber - 1]
+    window.location = lesson.dataset.href
   })
 }
 
-(() => {
+document.addEventListener('turbolinks:load', () => {
   addFirewall()
 
   if (window.location.pathname === '/') {
     addLessonForm()
   }
-})()
+})
 

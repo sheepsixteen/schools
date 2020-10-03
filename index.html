@@ -40,7 +40,7 @@ layout: default
         <div class="circle"></div>
         <div class="line"></div>
       </div>
-      <article class="lesson lh-copy measure mb4 f5">
+      <article data-href="{{ lesson.url }}" class="lesson lh-copy measure mb4 f5">
         <h2 class="mt0 f4">{{ lesson.title }}</h2>
         {{ lesson.excerpt | truncate: 100 }}
         <a class="db mt1 link" href="{{ lesson.url }}">
