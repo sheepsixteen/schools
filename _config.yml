@@ -18,6 +18,7 @@ kramdown:
 
 theme: 
 plugins:
+  - jekyll-coffeescript
   - jekyll-seo-tag
   - jekyll-turbolinks
 
