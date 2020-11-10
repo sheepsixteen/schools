@@ -1,0 +1,13 @@
+{
+  "name": "schools",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sheepsixteen/schools.git",
+  "author": "Ori Marash <ori@marash.net>",
+  "license": "MIT",
+  "dependencies": {
+    "@now/node": "^1.4.1",
+    "@types/simple-oauth2": "^2.5.2",
+    "simple-oauth2": "^2.5.2"
+  }
+}

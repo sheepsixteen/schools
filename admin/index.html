@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Netlify CMS -->
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script>
+      CMS.registerEditorComponent({
+        id: "details",
+        label: "Summary / Details",
+        fields: [
+          { name: 'summary', label: 'Summary (always shown)', widget: 'string' },
+          { name: 'details', label: 'Details (shown on click)', widget: 'markdown' }
+        ],
+        pattern: /^<details>\n<summary>\n(.+)\n<\/summary>\n(.+)<\/details>$/s,
+        fromBlock: function(match) {
+          return {
+            summary: match[1],
+            details: match[2]
+          }
+        },
+        toBlock: function(obj) {
+          return `<details>\n<summary>\n${obj.summary}\n</summary>\n${obj.details}\n</details>`
+        },
+        toPreview: function(obj) {
+          return (
+            `<details>\n<summary>\n${obj.summary}\n</summary>\n${obj.details}\n</details>`
+          )
+        }
+      })
+    </script>
+  </body>
+</html>

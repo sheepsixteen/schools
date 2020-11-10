@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: sheepsixteen/schools
+  branch: master
+  base_url: https://schools.spacesheep.dev
+  auth_endpoint: api/auth
+
+media_folder: /assets
+public_folder: /assets
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "_posts/"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Lesson number", name: "lesson_number", widget: "number" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
