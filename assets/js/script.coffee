@@ -105,7 +105,15 @@ addLessonForm = ->
     lesson = document.getElementsByTagName('article')[lessonNumber - 1]
     window.location = lesson.dataset.href
 
+# When clicking #back-to-top, scroll to the top of the page
+setupBackToTop = ->
+  if back_to_top = $('back-to-top')
+    back_to_top.addEventListener 'click', (e) ->
+      e.preventDefault()
+      window.scrollTo(0, 0)
+
 document.addEventListener 'turbolinks:load', ->
   setupPassword()
   addLessonForm()
+  setupBackToTop()
 
