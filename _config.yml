@@ -1,13 +1,13 @@
 title: SpaceSheep Schools
-email: email@email.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
+email: support@sheep16.org
+description: >-
+  בתקופה מאתגרת וחסרת ודאות, נדרשים כלי לימוד חדשניים וגמישים המאפשרים לימוד
+  מרחוק ובהתאמות הנדרשות ללימוד כזה, אך גם גמישות ללימוד בכיתה באופן יותר
+  מסורתי, וכמובן שילוב בינהם. זו בדיוק תפיסת עולמנו.
+baseurl: ""
 url: "https://schools.spacesheep.dev"
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: bysheep16
+github_username:  sheepsixteen
 
 permalink: none
 
