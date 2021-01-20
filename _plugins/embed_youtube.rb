@@ -5,7 +5,7 @@ module Kramdown
     class SheepHtml < Html
       def convert_a(el, indent)
         # Get the host of the url
-        host = URI(el.attr["href"]).host
+        host = URI(el.attr["href"]).host || ""
 
         # If the host includes "youtube"
         if host.include? "youtube"

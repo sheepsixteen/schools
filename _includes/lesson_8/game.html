@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body {
+				background-color: #b3ccff;
+			}
+			
+			.inst {
+				position: absolute;
+				top: 10px;
+				left: 160px;
+				text-align: center;
+				font: bold 18px Courier new;
+			}
+			
+			.cod {
+				color: #00ee00;
+				background-color: #1a1a1a;
+				border:2px solid #808080;
+				border-radius: 4px;
+			}
+			
+			.refresh {
+				background-color: #8585ad;
+				font: bold 16px Courier new;
+				border:3px solid #47476b;
+				border-radius: 3px;
+				position: absolute;
+				width: 120px;
+				left: 710px;
+				top: 10px;
+			}
+			
+			.funcs {
+				position: absolute;
+				left: 50px;
+				top: 90px;
+			}
+			
+			.edenooli {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: #b3b3ff;
+				text-align: center;
+				font: bold 18px Courier new;
+				width: 280px;
+				height: 40px;
+				border: 4px solid #4d4dff;
+				border-radius: 24px;
+				margin-top: 32px;
+			}
+			
+			.droppppp {
+				position: absolute;
+				right: 50px;
+				top: 90px;
+			}
+			
+			.drop-zone {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: #1a1a1a;
+				text-align: center;
+				font: bold 12px Courier new;
+				width: 400px;
+				height: 40px;
+				border: 4px solid #808080;
+				border-radius: 24px;
+				margin-top: 32px;
+				opacity: 70%;
+			}
+			
+			.correct {
+				border-color: #009900;
+				background-color: #00dd00;
+				color: #000000;
+			}
+			
+			.wrong {
+				border-color: #990000;
+				background-color: #ff6666;
+				color: #000000;
+			}
+			
+			.ido-king {
+				opacity: 100%;
+				justify-content: space-between;
+			}
+			
+			.congrats {
+				font: bold 36px Courier new;
+				color: #7300e6;
+			}
+		
+		</style>
+	</head>
+	<body>
+		
+		<div><button class="refresh" onClick="window.location.reload();">התחל מחדש</button></div>
+		
+		<div class="inst" dir="rtl">
+			לפניכם רשימה ומספר פעולות עם ערכים.<br>
+			<div class="cod" dir="ltr">lst = ["apple", 8, 3.14, "CAT", "python", 18]<br></div>
+			התאימו בין כל פעולה לבין הרשימה החדשה:
+			<div class="congrats" id="eden-shamen"></div>
+		</div>
+		
+		<div class="funcs">
+			<div class="edenooli" id="append" draggable="true" ondrag="dragItem(event)">lst.append("8")</div>
+			<div class="edenooli" id="clear" draggable="true" ondrag="dragItem(event)">lst.clear()</div>
+			<div class="edenooli" id="extend" draggable="true" ondrag="dragItem(event)">lst.extend(["dog", True])</div>
+			<div class="edenooli" id="insert" draggable="true" ondrag="dragItem(event)">lst.insert(2, False)</div>
+			<div class="edenooli" id="pop" draggable="true" ondrag="dragItem(event)">lst.pop(5)</div>
+			<div class="edenooli" id="remove" draggable="true" ondrag="dragItem(event)">lst.remove(3.14)</div>
+			<div class="edenooli" id="reverse" draggable="true" ondrag="dragItem(event)">lst.reverse()</div>
+		</div>
+		
+		<div class="droppppp" id="ans">
+			<div class="drop-zone" id="drop--clear" style="color: #00ee00;">[]</div>
+			<div class="drop-zone" id="drop--reverse" style="color: #00ee00;">[18, "python", "CAT", 3.14, 8, "apple"]</div>
+			<div class="drop-zone" id="drop--append" style="color: #00ee00;">["apple", 8, 3.14, "CAT", "python", 18, "8"]</div>
+			<div class="drop-zone" id="drop--insert" style="color: #00ee00;">["apple", 8, False, 3.14, "CAT", "python", 18]</div>
+			<div class="drop-zone" id="drop--remove" style="color: #00ee00;">["apple", 8, "CAT", "python", 18]</div>
+			<div class="drop-zone" id="drop--extend" style="color: #00ee00;">["apple", 8, 3.14, "CAT", "python", 18, "dog", True]</div>
+			<div class="drop-zone" id="drop--pop" style="color: #00ee00;">["apple", 8, 3.14, "CAT", "python"]</div>
+		</div>
+		
+		<script>
+		
+			var correct = [0, 0, 0, 0, 0, 0, 0];
+			const ids = ["append", "clear", "extend", "insert", "pop", "remove", "reverse"];
+			
+			function updateCorrect(id, c){
+				if (c)
+					correct[ids.indexOf(id)] = 1;
+				else
+					correct[ids.indexOf(id)] = 0;
+			}
+			
+			function sleep(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+			
+			function checkWin(){
+				for (var xxx = 0; xxx < correct.length; xxx++){
+					if (correct[xxx] == 0)
+						return false;
+				}
+				return true;
+				
+			}
+		
+		
+			var cur_id = "";
+			function dragItem(e){
+				cur_id = e.target.id;
+			}
+			
+			
+			for(const dropZone of document.querySelectorAll(".drop-zone")){
+				dropZone.addEventListener("dragover", e => {
+					e.preventDefault();
+				});
+				
+				dropZone.addEventListener("dragleave", e => {
+				});
+				
+				dropZone.addEventListener("drop", e => {
+					e.preventDefault();
+					
+					const droppedElementId = cur_id;
+					const droppedElement = document.getElementById(droppedElementId);
+					
+					dropId = dropZone.id;
+					
+					if(dropZone.childNodes.length < 2){
+						dropZone.appendChild(droppedElement);
+						
+						if (cur_id == dropId.split("--")[1]){
+							updateCorrect(cur_id, true);
+							droppedElement.classList.remove("wrong");
+							droppedElement.classList.add("correct");
+							droppedElement.setAttribute('draggable', false);
+							dropZone.classList.add("ido-king");
+						}
+						else{
+							updateCorrect(cur_id, false);
+							droppedElement.classList.remove("correct");
+							droppedElement.classList.add("wrong");
+						}
+					}
+					
+					if(checkWin()){
+						var x = document.getElementsByClassName("drop-zone");
+						
+						const elemnt = document.getElementById("eden-shamen");
+						elemnt.innerHTML = "כל הכבוד! הצלחתם את הכל!";
+						
+						async function poop(){
+							for (var pooppoop = 400; pooppoop <= 740; pooppoop += 2){
+								for (var it = 0; it < x.length; it++){
+									x[it].style.width = (pooppoop + "px");
+								}
+								await sleep(8);
+							}
+						}
+						poop();
+					}
+				});
+			}		
+		</script>
+	</body>
+</html>
