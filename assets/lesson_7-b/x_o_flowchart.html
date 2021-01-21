@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		body {
+			background-image: url("Empty_Flowchart_xo.png");
+		}
+		
+		.drop-zone {
+			width: 100px;
+			height: 100px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			<!-- border: 5px dashed black; -->
+		}
+		
+		.bank-zone {
+			width: 200px;
+			height: 50px;
+			background-color: #bf80ff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-left: 10px;
+			margin-top: 5px;
+			border:5px solid #bf80ff;
+			border-radius: 4px;"
+		}
+		
+		.bank-zone .drop-zone{
+			width: 200px;
+		}
+		
+		.draggableElement {
+			width: 200px;
+			background-color: #eeccff;
+			border: 1px solid #000000;
+			border-radius: 4px;
+			font: bold 18px Courier new;
+			text-align: center;
+		}
+		
+		.ido-king {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #99ccff;
+			font: bold 72px Courier new;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 850px;
+			height: 1050px;
+		}
+		
+		button {
+			background-color: #3366ff;
+			font: bold 56px Courier new;
+			border:5px solid #002db3;
+			border-radius: 5px;
+		}
+		
+		.refresh {
+			background-color: #8585ad;
+			font: bold 16px Courier new;
+			border:3px solid #47476b;
+			border-radius: 3px;
+			position: absolute;
+			width: 120px;
+			left: 710px;
+			top: 10px;
+		}
+		
+		.correct {
+			background-color: #00ff00;
+		}
+		
+		.wrong {
+			background-color: #ff6666;
+		}
+	</style>
+</head>
+<body>
+	<div class="drop-zone" id="drop--main" style="position: absolute; left: 415px; top: 25px;"></div>
+	<div class="drop-zone" id="drop--initialize_game" style="position: absolute; left: 415px; top: 170px;"></div>
+	<div class="drop-zone" id="drop--ver1" style="position: absolute; left: 605px; top: 245px;"></div>
+	<div class="drop-zone" id="drop--init_globals" style="position: absolute; left: 415px; top: 330px;"></div>
+	<div class="drop-zone" id="drop--print_board" style="position: absolute; left: 415px; top: 435px;"></div>
+	<div class="drop-zone" id="drop--check_winner" style="position: absolute; left: 415px; top: 580px;"></div>
+	<div class="drop-zone" id="drop--announce_winner" style="position: absolute; left: 250px; top: 695px;"></div>
+	<div class="drop-zone" id="drop--input_location" style="position: absolute; left: 600px; top: 695px;"></div>
+	<div class="drop-zone" id="drop--ver2" style="position: absolute; left: 465px; top: 765px;"></div>
+	<div class="drop-zone" id="drop--update_board" style="position: absolute; left: 600px; top: 820px;"></div>
+	<div class="drop-zone" id="drop--check_rem" style="position: absolute; left: 600px; top: 930px;"></div>
+	<div class="drop-zone" id="drop--end_game" style="position: absolute; left: 250px; top: 815px;"></div>
+	
+	<div><button class="refresh" onClick="window.location.reload();">התחל מחדש</button></div>
+	
+	<div id="end" align="center"></div>
+	
+	<script>
+		var contents=new Array()
+		contents[0]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="main" draggable="true" ondrag="dragItem(event)">main()</div></div></div>'
+		
+		contents[1]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="initialize_game" draggable="true" ondrag="dragItem(event)">initialize_game()</div></div></div>'
+		
+		contents[2]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="print_board" draggable="true" ondrag="dragItem(event)">print_board()</div></div></div>'
+		
+		contents[3]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="check_winner" draggable="true" ondrag="dragItem(event)">check_winner()</div></div></div>'
+		
+		contents[4]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="input_location" draggable="true" ondrag="dragItem(event)">input_location()</div></div></div>'
+		
+		contents[5]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="update_board" draggable="true" ondrag="dragItem(event)">update_board()</div></div></div>'
+		
+		contents[6]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="announce_winner" draggable="true" ondrag="dragItem(event)">announce_winner()</div></div></div>'
+		
+		contents[7]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="ver1" draggable="true" ondrag="dragItem(event)" style="font-size: 16px;">בדיקת הקלט הראשוני<br>?האם תקין</div></div></div>'
+		
+		contents[8]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="init_globals" draggable="true" ondrag="dragItem(event)" style="font-size: 16px;">אתחול המשתנים<br>הגלובאליים</div></div></div>'
+		
+		contents[9]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="ver2" draggable="true" ondrag="dragItem(event)" style="font-size: 16px;">בדיקת קלט המקום<br>?האם תקין</div></div></div>'
+		
+		contents[10]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="check_rem" draggable="true" ondrag="dragItem(event)" style="font-size: 16px;">האם נותרו<br>?תורות במשחק</div></div></div>'
+		
+		contents[11]='<div class="bank-zone"><div class="drop-zone" id="bank"><div class="draggableElement" id="end_game" draggable="true" ondrag="dragItem(event)">סיום המשחק</div></div></div>'
+	
+		var i=0
+		var random
+		while (i<contents.length){
+			random=Math.floor(Math.random()*contents.length)
+			if (contents[random]!="selected"){
+				document.write(contents[random]);
+				contents[random]="selected"
+				i++
+			}
+		}
+		
+		var correct = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		const ids = ["main", "initialize_game", "print_board", "check_winner", "input_location", "update_board",
+						"announce_winner", "ver1", "init_globals", "ver2", "check_rem", "end_game"];
+		
+		function updateCorrect(id, c){
+			if (c)
+				correct[ids.indexOf(id)] = 1;
+			else
+				correct[ids.indexOf(id)] = 0;
+		}
+		
+		function checkWin(){
+			for (var xxx = 0; xxx < correct.length; xxx++){
+				if (correct[xxx] == 0)
+					return false;
+			}
+			return true;
+			
+		}
+		
+		var cur_id = "";
+		function dragItem(e){
+			cur_id = e.target.id;
+		}
+		for(const dropZone of document.querySelectorAll(".drop-zone")){
+			dropZone.addEventListener("dragover", e => {
+				e.preventDefault();
+			});
+			
+			dropZone.addEventListener("dragleave", e => {
+			});
+			
+			dropZone.addEventListener("drop", e => {
+				e.preventDefault();
+				
+				const droppedElementId = cur_id;
+				const droppedElement = document.getElementById(droppedElementId);
+				
+				dropId = dropZone.id;
+				if(dropId != "bank" && !dropZone.hasChildNodes()){
+					dropZone.appendChild(droppedElement);
+					
+					if (cur_id == dropId.split("--")[1]){
+						updateCorrect(cur_id, true);
+						droppedElement.classList.remove("wrong");
+						droppedElement.classList.add("correct");
+					}
+					else{
+						updateCorrect(cur_id, false);
+						droppedElement.classList.remove("correct");
+						droppedElement.classList.add("wrong");
+					}
+				}
+				if(dropId == "bank" && !dropZone.hasChildNodes()){
+					dropZone.appendChild(droppedElement);
+					droppedElement.classList.remove("correct");
+					droppedElement.classList.remove("wrong");
+					updateCorrect(cur_id, false);
+				}
+				
+				if(checkWin()){
+					const elemnt = document.getElementById("end");
+					elemnt.classList.add("ido-king");
+					elemnt.innerHTML = '<div><div dir="rtl" align="center">כל הכבוד!!<br>ענית על הכל נכון!!!</div>' +
+					'<div><button onClick="window.location.reload();">התחל מחדש</button></div></div>';
+				}
+			});
+		}		
+	</script>
+</body>
