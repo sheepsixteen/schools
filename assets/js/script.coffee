@@ -102,8 +102,7 @@ addLessonForm = ->
     e.preventDefault()
 
     lessonNumber = $('lesson_number').value
-    lesson = document.getElementsByTagName('article')[lessonNumber - 1]
-    window.location = lesson.dataset.href
+    window.location = "/lesson-#{lessonNumber}.html"
 
 # When clicking #back-to-top, scroll to the top of the page
 setupBackToTop = ->
